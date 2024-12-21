@@ -185,7 +185,6 @@ button .ripple {
         else { document.querySelector(".notif2").style.animation = "kelip 1200ms infinite ease"; document.querySelector(".background2").style.transition = "3s all ease"; document.querySelector(".background2").style.opacity = "0"; 
               if (noWhatsapp && pesanWhatsapp) { document.querySelector(".kirimWA").style.display = "inline-block"; } } } 
       function notif2() { document.querySelector(".hilang3").style.display = "none"; audio.pause(); document.querySelector(".notif3").style.transform = "translateX(0)"; } 
-      const swalom = Swal.mixin({ confirmButtonColor: "#23a542", allowOutsideClick: false, showCancelButton: false, customClass: { popup: "border-radius", }, }); 
       function startTime() { tanggal(); 
                             const today = new Date(); 
                             let h = today.getHours(); 
