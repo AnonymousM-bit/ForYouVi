@@ -496,9 +496,10 @@ button .ripple {
             var { value: nama } = await swalo.fire({ imageUrl: "https://dekatutorial.github.io/stiker_mylove.gif", imageHeight: 120, title: "Holla, Princess, What's Your name?", input: "text", confirmButtonText: "Send", }); 
               if (nama) { document.querySelector(".hilang2").style.display = "none"; txt = "Holla " + nama + ", "; 
               if (ucapan) { txt += ucapan; } 
-              else { document.querySelector(".notif2").style.display = "inline-block";
+              else { 
+                document.querySelector(".kembali1").style.display = "inline-block";
+                document.querySelector(".notif2").style.display = "inline-block;
                 txt += "Annoying person. Btw today is the 31th, right? Someone's having a birthday, hehehe. Happy birthday, princess. Hopefull you always be healthy, become more religious, become more mature, And What is certain I hope that you will always be protected by Allah SWT. Hehehe forget, not to overthink, don't blame yourself anymore, and definitely don't feel like you've failed. I always believe you're strong, You can get what you want, and you're able to grow. Oh, my message is already so long, I forgot, hehehe. One more sentence, don't get bored reading, okay? Hehehe. Maybe I often say this, If you need a place to share something, tell stories, or ask questions, I'm here Beside you and always support you even though we are not at the same time and place. But my prayers are always there";
-                   document.querySelector(".kembali1").style.display = "inline-block";
                    } typeWriter(); notif2(); } 
               else { await swalo.fire({ imageUrl: "https://dekatutorial.github.io/stiker2_mylove.gif", imageHeight: 120, confirmButtonText: "Yes I do", title: "Why not fill it? I want to get to know you...", }); balas(); } } 
             function notif2() { notif.play(); document.querySelector(".notif1").style.display = "none"; document.querySelector(".notif2").style.transform = "translateX(0)"; } 
