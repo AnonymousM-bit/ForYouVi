@@ -177,6 +177,9 @@
         .btn-mulai p.maju1 { 
           display: none; 
         } 
+      .btn-mulai p.special1 { 
+          display: none; 
+        } 
         .btn-mulai p.kirimWA { 
           display: none; 
           color: white; 
@@ -445,9 +448,17 @@ button .ripple {
       var audio = document.querySelector(".audio"); 
         if (musik) audio.src = musik; 
           var notif = document.querySelector(".notif"); 
-        if (pengirim) { document.querySelector(".nama1").innerHTML = pengirim; document.querySelector(".nama2").innerHTML = pengirim; } 
-        if (background1) { document.querySelector(".background2").style.backgroundImage = "url('" + background1 + "')"; } 
-        if (background2) { document.querySelector(".background1").style.backgroundImage = "url('" + background2 + "')"; } $(window).on("load", 
+        if (pengirim) { 
+          document.querySelector(".nama1").innerHTML = pengirim; 
+          document.querySelector(".nama2").innerHTML = pengirim;
+        } 
+        if (background1) { 
+          document.querySelector(".background2").style.backgroundImage = "url('" + background1 + "')"; 
+        } 
+        if (background2) { 
+          document.querySelector(".background1").style.backgroundImage = "url('" + background2 + "')"; 
+        } 
+      $(window).on("load", 
           function () { $(".loading").fadeOut("slow"); }); 
           function tanggal() { 
             const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
@@ -460,7 +471,7 @@ button .ripple {
             document.querySelector(".kembali1").style.display = "inline-block";
             document.querySelector(".notif3").style.display = "inline-block";
             document.querySelector(".notif3").style.transform = "translateX(0)";
-            document.querySelector(".maju1").style.display = "inline-block"
+            document.querySelector(".maju1").style.display = "inline-block";
             notif.play();
         }
         function next1()  {
