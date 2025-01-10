@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            margin: 20px 0;
+            color: #333;
+        }
+
+        #puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 5px;
+            justify-content: center;
+            margin: 20px auto;
+            width: fit-content;
+        }
+
+        .tile {
+            width: 100px;
+            height: 100px;
+            background-size: 300px 300px;
+            background-position: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .empty {
+            background-color: #f4f4f9;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clear puzzle to Open</h1>
+    <div id="puzzle-container"></div>
+
+    <script>
+        const container = document.getElementById('puzzle-container');
+        const imageSrc = 'image2.jpg'; // Replace with your image URL
+        let tiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+        // Shuffle the tiles
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function createTiles() {
+            container.innerHTML = '';
+            tiles.forEach((tile, index) => {
+                const div = document.createElement('div');
+                div.classList.add('tile');
+
+                if (tile === 8) {
+                    div.classList.add('empty');
+                } else {
+                    const x = (tile % 3) * 100;
+                    const y = Math.floor(tile / 3) * 100;
+                    div.style.backgroundImage = `url(${imageSrc})`;
+                    div.style.backgroundPosition = `-${x}px -${y}px`;
+                    div.addEventListener('click', () => moveTile(index));
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function moveTile(index) {
+            const emptyIndex = tiles.indexOf(8);
+            const validMoves = [
+                emptyIndex - 1, // left
+                emptyIndex + 1, // right
+                emptyIndex - 3, // above
+                emptyIndex + 3  // below
+            ];
+
+            if (validMoves.includes(index)) {
+                [tiles[index], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[index]];
+                createTiles();
+                checkWin();
+            }
+        }
+
+        function checkWin() {
+            const winState = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+            if (JSON.stringify(tiles) === JSON.stringify(winState)) {
+                alert("Congratulations! You solved the puzzle!");
+                window.location.href = 'nextpage.html'; // Replace with your desired URL
+            }
+        }
+
+        shuffle(tiles);
+        createTiles();
+    </script>
+</body>
+</html>
