@@ -50,12 +50,48 @@
             background-color: #f4f4f9;
             cursor: default;
         }
+        .countdown {
+            text-align: center;
+        }
+        .countdown h1 {
+            margin: 0 0 10px;
+        }
+        .countdown p {
+            font-size: 1.5rem;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
     <h1>Clear puzzle to Next page</h1>
+    <h1>2-Minute Countdown</h1>
+    <div class="countdown">
+        <p id="timer">2:00</p>
+    </div>
     <div id="puzzle-example"></div>
     <div id="puzzle-container"></div>
+
+    <script>
+        let timeLeft = 120; // 2 minutes in seconds
+        const timerElement = document.getElementById("timer");
+
+        function updateCountdown() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert("Even though you failed to complete the puzzle, you can free to continue!");
+                window.location.href = 'nextpage.html';  // Replace with your target URL
+            }
+
+            timeLeft--;
+        }
+
+        const timerInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 
     <script>
         const container = document.getElementById('puzzle-container');
